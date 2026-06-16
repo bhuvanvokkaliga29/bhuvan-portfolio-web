@@ -16,7 +16,9 @@ const Portfolio = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const scannerRef = useRef<HTMLDivElement>(null);
   
-  const [isDesktop, setIsDesktop] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth >= 1024 : true
+  );
   const [scannerPos, setScannerPos] = useState({ x: -500, y: -500 });
   const [dimensions, setDimensions] = useState({ width: 1920, height: 1080 });
 

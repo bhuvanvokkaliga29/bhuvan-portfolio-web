@@ -25,7 +25,9 @@ const Welcome = () => {
     { title: "Web Dev", skills: ["React.js", "Node.js", "Flask", "Tailwind CSS"] }
   ];
 
-  const [isDesktop, setIsDesktop] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(() => 
+    typeof window !== "undefined" ? window.innerWidth >= 1024 : true
+  );
 
   useEffect(() => {
     const checkViewport = () => {
@@ -37,13 +39,20 @@ const Welcome = () => {
   }, []);
 
   useEffect(() => {
-    if (!isDesktop) return;
+    const bio = bioRef.current;
+    const journey = journeyRef.current;
+    const title = titleRef.current;
+
+    if (!isDesktop) {
+      // Clear any leftover GSAP inline styles so elements are visible on mobile
+      if (bio) gsap.set(bio, { clearProps: "all" });
+      if (journey) gsap.set(journey, { clearProps: "all" });
+      if (title) gsap.set(title, { clearProps: "all" });
+      return;
+    }
 
     const section = sectionRef.current;
     const sticky = stickyRef.current;
-    const title = titleRef.current;
-    const bio = bioRef.current;
-    const journey = journeyRef.current;
 
     if (!section || !sticky || !title || !bio || !journey) return;
 
@@ -70,6 +79,10 @@ const Welcome = () => {
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      // Reset inline styles on cleanup so mobile switch works
+      if (bio) gsap.set(bio, { clearProps: "all" });
+      if (journey) gsap.set(journey, { clearProps: "all" });
+      if (title) gsap.set(title, { clearProps: "all" });
     };
   }, [isDesktop]);
 
@@ -105,13 +118,14 @@ const Welcome = () => {
         {/* --- Slide 1: Split Screen Biography & Full Body Photo --- */}
         <div
           ref={bioRef}
+          data-aos={!isDesktop ? "fade-up" : undefined}
           className={`${
             isDesktop
               ? "absolute inset-0 flex items-center justify-center max-w-7xl mx-auto px-4 z-10 w-full"
               : "relative w-full max-w-7xl mx-auto z-10 flex flex-col items-center"
           }`}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 items-center w-full">
             
             {/* Left Side: Full Body Image Frame (5 cols) */}
             <div className="lg:col-span-5 flex justify-center">
@@ -153,13 +167,15 @@ const Welcome = () => {
         {/* --- Slide 2: Journey & Expertise (Columnar Timeline & Skills) --- */}
         <div
           ref={journeyRef}
+          data-aos={!isDesktop ? "fade-up" : undefined}
+          data-aos-delay={!isDesktop ? "200" : undefined}
           className={`${
             isDesktop
               ? "absolute inset-0 w-full h-full flex flex-col justify-center items-center max-w-7xl mx-auto px-4 z-10 opacity-0 pointer-events-none"
               : "relative w-full max-w-7xl mx-auto z-10 flex flex-col items-center opacity-100 pointer-events-auto"
           }`}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 w-full items-start">
             
             {/* Column 1: Journey Timeline (6 cols) */}
             <div className="lg:col-span-6 space-y-6">

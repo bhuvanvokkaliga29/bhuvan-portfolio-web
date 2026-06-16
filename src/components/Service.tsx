@@ -70,7 +70,9 @@ const Service = () => {
     },
   ];
 
-  const [isDesktop, setIsDesktop] = useState(true);
+  const [isDesktop, setIsDesktop] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth >= 1024 : true
+  );
 
   useEffect(() => {
     const checkViewport = () => {
