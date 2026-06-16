@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,49 +6,35 @@
 
 @layer base {
   :root {
-    --background: 240 15% 5%;
-    --foreground: 210 40% 96%;
+    --background: 240 10% 3.9%; /* zinc-950 */
+    --foreground: 0 0% 100%; /* white */
 
-    --card: 240 15% 8%;
-    --card-foreground: 210 40% 96%;
+    --card: 240 10% 5.9%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 240 15% 8%;
-    --popover-foreground: 210 40% 96%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 263 85% 58%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 47.9 95.8% 51.2%; /* #facc15 (yellow) */
+    --primary-foreground: 240 10% 3.9%;
 
-    --secondary: 186 100% 50%;
-    --secondary-foreground: 240 15% 5%;
+    --secondary: 240 5.9% 10%; /* zinc-900 */
+    --secondary-foreground: 0 0% 98%;
 
-    --muted: 240 10% 14%;
-    --muted-foreground: 215 20% 65%;
+    --muted: 240 3.7% 15.9%; /* zinc-800 */
+    --muted-foreground: 240 5% 64.9%;
 
-    --accent: 263 60% 30%;
-    --accent-foreground: 210 40% 96%;
+    --accent: 47.9 95.8% 51.2%;
+    --accent-foreground: 240 10% 3.9%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 263 30% 20%;
-    --input: 240 10% 14%;
-    --ring: 263 85% 58%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 47.9 95.8% 51.2%;
 
-    --radius: 0.75rem;
-
-    --neon-purple: 263 85% 58%;
-    --neon-cyan: 186 100% 50%;
-    --glass-bg: 240 15% 8%;
-    --glass-border: 263 40% 30%;
-
-    --sidebar-background: 240 15% 5%;
-    --sidebar-foreground: 210 40% 96%;
-    --sidebar-primary: 263 85% 58%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 263 60% 30%;
-    --sidebar-accent-foreground: 210 40% 96%;
-    --sidebar-border: 263 30% 20%;
-    --sidebar-ring: 263 85% 58%;
+    --radius: 1.5rem;
   }
 }
 
@@ -58,114 +44,155 @@
   }
 
   body {
-    @apply bg-background text-foreground font-body;
+    @apply bg-background text-foreground font-body antialiased;
     overflow-x: hidden;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Orbitron', sans-serif;
+  h1, h2, h3, h4 {
+    font-family: 'Syne', sans-serif;
   }
 
+  p, span, a, button, input, textarea, label {
+    font-family: 'Outfit', sans-serif;
+  }
+
+  /* Selection highlight: yellow transparent style (custom yellow with solid background block) */
   ::selection {
-    background: hsl(263 85% 58% / 0.4);
-    color: white;
+    background-color: #facc15;
+    color: #09090b;
   }
 
+  /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
+    height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: hsl(240 15% 5%);
+    background: #09090b;
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(263 85% 58% / 0.5);
-    border-radius: 3px;
+    background: #27272a;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #facc15;
   }
 }
 
 @layer utilities {
-  .glass {
-    background: hsl(var(--glass-bg) / 0.6);
-    backdrop-filter: blur(20px);
-    border: 1px solid hsl(var(--glass-border) / 0.3);
+  .glassmorphism {
+    background: rgba(9, 9, 11, 0.45);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(255, 255, 255, 0.05);
   }
 
-  .glass-strong {
-    background: hsl(var(--glass-bg) / 0.8);
+  .glassmorphism-light {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .glassmorphism-strong {
+    background: rgba(9, 9, 11, 0.85);
     backdrop-filter: blur(30px);
-    border: 1px solid hsl(var(--glass-border) / 0.4);
+    -webkit-backdrop-filter: blur(30px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .neon-glow {
-    box-shadow: 0 0 15px hsl(var(--neon-purple) / 0.4),
-                0 0 45px hsl(var(--neon-purple) / 0.1);
+  /* Marching Ants / Crop Frame Animation */
+  .marching-ants {
+    stroke-dasharray: 10;
+    animation: ants 0.8s linear infinite;
   }
 
-  .neon-glow-cyan {
-    box-shadow: 0 0 15px hsl(var(--neon-cyan) / 0.4),
-                0 0 45px hsl(var(--neon-cyan) / 0.1);
+  @keyframes ants {
+    to {
+      stroke-dashoffset: -20;
+    }
   }
 
-  .neon-text {
-    text-shadow: 0 0 10px hsl(var(--neon-purple) / 0.6),
-                 0 0 40px hsl(var(--neon-purple) / 0.2);
-  }
-
-  .neon-text-cyan {
-    text-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.6),
-                 0 0 40px hsl(var(--neon-cyan) / 0.2);
-  }
-
-  .gradient-text {
-    @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--neon-purple)), hsl(var(--neon-cyan)));
-  }
-
-  .gradient-bg {
-    background: linear-gradient(135deg, hsl(var(--neon-purple)), hsl(var(--neon-cyan)));
-  }
-
-  .gradient-border {
-    position: relative;
-  }
-  .gradient-border::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    padding: 1px;
-    background: linear-gradient(135deg, hsl(var(--neon-purple)), hsl(var(--neon-cyan)));
-    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite: xor;
-    mask-composite: exclude;
+  /* Noise Overlay */
+  .noise-overlay {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.02;
     pointer-events: none;
   }
 
-  .hero-gradient {
-    background: radial-gradient(ellipse at 30% 20%, hsl(263 85% 20% / 0.4) 0%, transparent 60%),
-                radial-gradient(ellipse at 70% 80%, hsl(186 100% 20% / 0.2) 0%, transparent 60%),
-                linear-gradient(180deg, hsl(240 15% 3%) 0%, hsl(240 15% 5%) 50%, hsl(260 20% 8%) 100%);
+  /* Infinite Marquee Animations */
+  .animate-marquee-left {
+    display: flex;
+    width: max-content;
+    animation: marquee-l 30s linear infinite;
   }
 
-  .section-gradient {
-    background: linear-gradient(180deg, transparent 0%, hsl(263 30% 8% / 0.3) 50%, transparent 100%);
+  .animate-marquee-right {
+    display: flex;
+    width: max-content;
+    animation: marquee-r 30s linear infinite;
   }
 
-  .floating {
-    animation: float 6s ease-in-out infinite;
+  @keyframes marquee-l {
+    0% { transform: translate3d(0, 0, 0); }
+    100% { transform: translate3d(-50%, 0, 0); }
   }
 
-  @keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
+  @keyframes marquee-r {
+    0% { transform: translate3d(-50%, 0, 0); }
+    100% { transform: translate3d(0, 0, 0); }
   }
 
-  @keyframes pulse-glow {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 1; }
+  /* Custom glow effect */
+  .glow-yellow {
+    box-shadow: 0 0 25px rgba(250, 204, 21, 0.35);
   }
 
-  .pulse-glow {
-    animation: pulse-glow 3s ease-in-out infinite;
+  .glow-blue {
+    box-shadow: 0 0 25px rgba(37, 99, 235, 0.45);
   }
+
+  .glow-neon-white {
+    box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+  }
+
+  /* Hide scrollbar */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .text-stroke {
+    -webkit-text-stroke: 2.5px rgba(255, 255, 255, 0.65);
+    color: transparent;
+  }
+
+  .text-stroke-yellow {
+    -webkit-text-stroke: 1.5px rgba(250, 204, 21, 0.4);
+    color: transparent;
+  }
+}
+
+/* Smooth Scrolling Support for Lenis */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis-scrolling iframe {
+  pointer-events: none;
 }
