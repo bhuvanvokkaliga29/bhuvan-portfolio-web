@@ -70,8 +70,18 @@ const Service = () => {
     },
   ];
 
+  const [isDesktop, setIsDesktop] = useState(true);
+
   useEffect(() => {
-    const isDesktop = window.innerWidth >= 1024;
+    const checkViewport = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    checkViewport();
+    window.addEventListener("resize", checkViewport);
+    return () => window.removeEventListener("resize", checkViewport);
+  }, []);
+
+  useEffect(() => {
     if (!isDesktop) return;
 
     const section = sectionRef.current;
@@ -139,7 +149,7 @@ const Service = () => {
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
-  }, []);
+  }, [isDesktop]);
 
   // Mobile layout background switcher helper
   const handleMobileScroll = (e: React.UIEvent<HTMLDivElement>) => {
@@ -159,13 +169,17 @@ const Service = () => {
     <section
       ref={sectionRef}
       id="service"
-      className="relative w-full h-[600vh] lg:h-[600vh] overflow-hidden transition-colors duration-1000 z-20"
+      className={`relative w-full transition-colors duration-1000 z-20 ${
+        isDesktop ? "h-[600vh] overflow-hidden" : "h-auto py-12"
+      }`}
       style={{ backgroundColor: activeColor }}
     >
       {/* Sticky Fullscreen Section */}
       <div
         ref={stickyRef}
-        className="w-full h-screen sticky top-0 overflow-hidden flex flex-col justify-center items-center px-6 md:px-16"
+        className={`w-full flex flex-col justify-center items-center px-4 sm:px-6 md:px-16 ${
+          isDesktop ? "h-screen sticky top-0 overflow-hidden" : "h-auto min-h-[80vh] relative"
+        }`}
       >
         {/* Outlined Background typography watermark */}
         <h2 className="absolute inset-0 flex items-center justify-center text-[18vw] font-black uppercase tracking-tighter text-white/5 select-none pointer-events-none leading-none z-0">
@@ -173,11 +187,13 @@ const Service = () => {
         </h2>
 
         {/* Title */}
-        <div className="text-center absolute top-24 z-30">
+        <div className={`text-center z-30 ${
+          isDesktop ? "absolute top-24" : "relative pt-8 mb-6"
+        }`}>
           <span className="text-yellow-400 font-extrabold text-xs uppercase tracking-[0.2em]">
             What I Offer
           </span>
-          <h3 className="text-4xl md:text-5xl font-black uppercase tracking-tight text-white mt-1">
+          <h3 className="text-3xl sm:text-4xl md:text-5xl font-black uppercase tracking-tight text-white mt-1">
             My Services
           </h3>
         </div>
@@ -235,14 +251,14 @@ const Service = () => {
         {/* --- MOBILE SNAP SLIDER (Swipe layout) --- */}
         <div
           onScroll={handleMobileScroll}
-          className="lg:hidden flex overflow-x-auto snap-x snap-mandatory gap-6 no-scrollbar py-12 px-6 w-full z-10 relative mt-20"
+          className="lg:hidden flex overflow-x-auto snap-x snap-mandatory gap-4 no-scrollbar py-6 px-4 w-full z-10 relative"
         >
           {services.map((item, idx) => {
             const IconComponent = item.icon;
             return (
               <div
                 key={idx}
-                className="snap-center w-[80vw] h-[440px] rounded-[30px] bg-zinc-950/50 border border-white/10 backdrop-blur-xl p-8 flex flex-col justify-between shadow-2xl flex-shrink-0"
+                className="snap-center w-[80vw] h-[380px] rounded-[30px] bg-zinc-950/50 border border-white/10 backdrop-blur-xl p-6 flex flex-col justify-between shadow-2xl flex-shrink-0"
               >
                 <div className="space-y-4">
                   <div className="flex justify-between items-center">

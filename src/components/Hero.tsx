@@ -105,7 +105,7 @@ const Hero = () => {
     <section
       ref={containerRef}
       id="home"
-      className="relative min-h-screen bg-white text-zinc-950 flex items-center justify-center py-20 px-6 md:px-16 overflow-hidden z-20"
+      className="relative min-h-screen bg-white text-zinc-950 flex items-center justify-center py-16 sm:py-20 px-4 sm:px-6 md:px-16 overflow-hidden z-20"
     >
       <div className="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         {/* Left Side: Typography Content */}

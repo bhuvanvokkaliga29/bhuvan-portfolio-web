@@ -16,11 +16,21 @@ const Portfolio = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const scannerRef = useRef<HTMLDivElement>(null);
   
-  // Scanner coordinates (buttery smooth using gsap.quickTo)
+  const [isDesktop, setIsDesktop] = useState(true);
   const [scannerPos, setScannerPos] = useState({ x: -500, y: -500 });
   const [dimensions, setDimensions] = useState({ width: 1920, height: 1080 });
 
-  // Handle mouse moves and resize
+  // Check desktop view on mount/resize
+  useEffect(() => {
+    const checkViewport = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    checkViewport();
+    window.addEventListener("resize", checkViewport);
+    return () => window.removeEventListener("resize", checkViewport);
+  }, []);
+
+  // Handle mouse/touch moves and resize
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
@@ -56,24 +66,109 @@ const Portfolio = () => {
       }
     });
 
+    // Auto-move wandering animation variables for mobile
+    let autoMoveTween: gsap.core.Tween | null = null;
+    let resumeTimeout: NodeJS.Timeout | null = null;
+    let isUserInteracting = false;
+
+    const startAutoMove = () => {
+      if (isUserInteracting) return;
+      const currentRect = container.getBoundingClientRect();
+      const maxX = currentRect.width - 280;
+      const maxY = currentRect.height - 280;
+
+      const moveToRandom = () => {
+        if (isUserInteracting) return;
+        const randomX = Math.random() * maxX;
+        const randomY = Math.random() * maxY;
+        const duration = 2.5 + Math.random() * 2; // Slow, smooth cinematic drift
+
+        autoMoveTween = gsap.to(scannerRef.current, {
+          left: randomX,
+          top: randomY,
+          duration: duration,
+          ease: "sine.inOut",
+          onUpdate: () => {
+            const xVal = gsap.getProperty(scannerRef.current, "left") as number;
+            const yVal = gsap.getProperty(scannerRef.current, "top") as number;
+            setScannerPos({ x: xVal, y: yVal });
+          },
+          onComplete: moveToRandom,
+        });
+      };
+      
+      moveToRandom();
+    };
+
+    const stopAutoMove = () => {
+      if (autoMoveTween) {
+        autoMoveTween.kill();
+        autoMoveTween = null;
+      }
+      if (resumeTimeout) {
+        clearTimeout(resumeTimeout);
+        resumeTimeout = null;
+      }
+    };
+
+    // Initial run for mobile auto-movement
+    if (!isDesktop) {
+      setTimeout(startAutoMove, 100);
+    }
+
     const handleMouseMove = (e: MouseEvent) => {
       const rect = container.getBoundingClientRect();
       const relativeX = e.clientX - rect.left;
       const relativeY = e.clientY - rect.top;
       
-      // Update GSAP quickTo (offset by half scanner size to center on cursor)
       quickX(relativeX - 140);
       quickY(relativeY - 140);
     };
 
+    // Touch Event Handlers
+    const handleTouchStart = (e: TouchEvent) => {
+      isUserInteracting = true;
+      stopAutoMove();
+      handleTouchMove(e);
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      if (e.touches.length === 0) return;
+      const touch = e.touches[0];
+      const rect = container.getBoundingClientRect();
+      const relativeX = touch.clientX - rect.left;
+      const relativeY = touch.clientY - rect.top;
+      
+      quickX(relativeX - 140);
+      quickY(relativeY - 140);
+    };
+
+    const handleTouchEnd = () => {
+      isUserInteracting = false;
+      resumeTimeout = setTimeout(() => {
+        startAutoMove();
+      }, 1500);
+    };
+
     window.addEventListener("resize", updateDimensions);
-    container.addEventListener("mousemove", handleMouseMove);
+    
+    if (isDesktop) {
+      container.addEventListener("mousemove", handleMouseMove);
+    } else {
+      container.addEventListener("touchstart", handleTouchStart, { passive: true });
+      container.addEventListener("touchmove", handleTouchMove, { passive: true });
+      container.addEventListener("touchend", handleTouchEnd);
+    }
     
     return () => {
       window.removeEventListener("resize", updateDimensions);
       container.removeEventListener("mousemove", handleMouseMove);
+      container.removeEventListener("touchstart", handleTouchStart);
+      container.removeEventListener("touchmove", handleTouchMove);
+      container.removeEventListener("touchend", handleTouchEnd);
+      stopAutoMove();
     };
-  }, []);
+  }, [isDesktop]);
 
   // Compute CSS clip-path inset values for the sharp layer
   const rightInset = dimensions.width - (scannerPos.x + 280);
@@ -88,10 +183,12 @@ const Portfolio = () => {
     <section
       ref={containerRef}
       id="portfolio"
-      className="relative w-full h-screen overflow-hidden transition-colors duration-1000 select-none"
+      className={`relative w-full h-screen overflow-hidden transition-colors duration-1000 select-none ${
+        isDesktop ? "touch-none" : ""
+      }`}
       style={{
         backgroundColor: bgColor,
-        cursor: "crosshair",
+        cursor: isDesktop ? "crosshair" : "default",
       }}
     >
       {/* --- LAYER 1: BASE FULLY BLURRED LAYER (Blurred background + blurred half-body photo) --- */}

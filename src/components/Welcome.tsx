@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Trophy } from "lucide-react";
@@ -25,7 +25,20 @@ const Welcome = () => {
     { title: "Web Dev", skills: ["React.js", "Node.js", "Flask", "Tailwind CSS"] }
   ];
 
+  const [isDesktop, setIsDesktop] = useState(true);
+
   useEffect(() => {
+    const checkViewport = () => {
+      setIsDesktop(window.innerWidth >= 1024);
+    };
+    checkViewport();
+    window.addEventListener("resize", checkViewport);
+    return () => window.removeEventListener("resize", checkViewport);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) return;
+
     const section = sectionRef.current;
     const sticky = stickyRef.current;
     const title = titleRef.current;
@@ -58,13 +71,15 @@ const Welcome = () => {
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
-  }, []);
+  }, [isDesktop]);
 
   return (
     <div
       ref={sectionRef}
       id="about"
-      className="relative w-full h-[200vh] bg-gradient-to-b from-zinc-50 via-zinc-100 to-white text-zinc-950 z-20"
+      className={`relative w-full bg-gradient-to-b from-zinc-50 via-zinc-100 to-white text-zinc-950 z-20 transition-all duration-500 ${
+        isDesktop ? "h-[200vh]" : "h-auto py-12"
+      }`}
     >
       {/* Noise overlay */}
       <div className="absolute inset-0 noise-overlay" />
@@ -72,27 +87,35 @@ const Welcome = () => {
       {/* Sticky Panel Container */}
       <div
         ref={stickyRef}
-        className="w-full h-screen sticky top-0 overflow-hidden flex flex-col justify-center items-center px-6 md:px-16"
+        className={`w-full flex flex-col justify-center items-center px-4 sm:px-6 md:px-16 ${
+          isDesktop ? "h-screen sticky top-0 overflow-hidden" : "h-auto gap-12 relative"
+        }`}
       >
         {/* Background typography watermark (WELCOME) */}
-        <div
-          ref={titleRef}
-          className="absolute inset-0 flex items-center justify-center text-[28vw] font-black uppercase tracking-tighter text-zinc-800 pointer-events-none select-none opacity-15 z-0"
-          style={{ transformOrigin: "top center" }}
-        >
-          WELCOME
-        </div>
+        {isDesktop && (
+          <div
+            ref={titleRef}
+            className="absolute inset-0 flex items-center justify-center text-[28vw] font-black uppercase tracking-tighter text-zinc-800 pointer-events-none select-none opacity-15 z-0"
+            style={{ transformOrigin: "top center" }}
+          >
+            WELCOME
+          </div>
+        )}
 
         {/* --- Slide 1: Split Screen Biography & Full Body Photo --- */}
         <div
           ref={bioRef}
-          className="absolute inset-0 flex items-center justify-center max-w-7xl mx-auto px-4 z-10 w-full"
+          className={`${
+            isDesktop
+              ? "absolute inset-0 flex items-center justify-center max-w-7xl mx-auto px-4 z-10 w-full"
+              : "relative w-full max-w-7xl mx-auto z-10 flex flex-col items-center"
+          }`}
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center w-full">
             
             {/* Left Side: Full Body Image Frame (5 cols) */}
-            <div className="lg:col-span-5 hidden md:flex justify-center">
-              <div className="relative w-64 h-[380px] md:w-80 md:h-[450px] rounded-[36px] overflow-hidden shadow-2xl border-4 border-white bg-zinc-200">
+            <div className="lg:col-span-5 flex justify-center">
+              <div className="relative w-48 h-[280px] sm:w-56 sm:h-[340px] md:w-80 md:h-[450px] rounded-[36px] overflow-hidden shadow-2xl border-4 border-white bg-zinc-200">
                 <img
                   src={fullBodyImg}
                   alt="Bhuvan Gowda Full Body Portrait"
@@ -130,7 +153,11 @@ const Welcome = () => {
         {/* --- Slide 2: Journey & Expertise (Columnar Timeline & Skills) --- */}
         <div
           ref={journeyRef}
-          className="absolute inset-0 w-full h-full flex flex-col justify-center items-center max-w-7xl mx-auto px-4 z-10 opacity-0 pointer-events-none"
+          className={`${
+            isDesktop
+              ? "absolute inset-0 w-full h-full flex flex-col justify-center items-center max-w-7xl mx-auto px-4 z-10 opacity-0 pointer-events-none"
+              : "relative w-full max-w-7xl mx-auto z-10 flex flex-col items-center opacity-100 pointer-events-auto"
+          }`}
         >
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 w-full items-start">
             

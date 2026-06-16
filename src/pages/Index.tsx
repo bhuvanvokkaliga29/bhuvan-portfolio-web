@@ -16,12 +16,16 @@ const Index = () => {
       <Navbar />
 
       {/* 2. Fullscreen Fixed Background Portfolio Hero Section */}
-      <div className="fixed top-0 left-0 w-full h-screen z-0">
+      <div className="fixed top-0 left-0 w-full h-screen z-0 hidden lg:block">
+        <Portfolio />
+      </div>
+      {/* Mobile: Static inline portfolio section */}
+      <div className="lg:hidden w-full h-screen relative z-0">
         <Portfolio />
       </div>
 
       {/* 3. Scrollable Content Overlay Layer (scrolls over portfolio with overlap effect) */}
-      <div className="relative z-10 w-full mt-[100vh] bg-transparent shadow-[0_-20px_50px_rgba(9,9,11,0.8)]">
+      <div className="relative z-10 w-full lg:mt-[100vh] mt-0 bg-transparent shadow-[0_-20px_50px_rgba(9,9,11,0.8)]">
         
         {/* Hero Section */}
         <Hero />
