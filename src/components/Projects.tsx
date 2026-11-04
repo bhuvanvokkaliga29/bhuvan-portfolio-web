@@ -1,7 +1,7 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Github, ExternalLink, X, Folder, Sparkles } from "lucide-react";
+import { Github, ExternalLink, Folder, Sparkles, ArrowUpRight } from "lucide-react";
 
 // Light-themed Domain-Specific Dashboard Thumbnails
 import amlThumbnail from "../assets/thumbnails/aml-mule-dashboard.svg";
@@ -29,8 +29,6 @@ interface Project {
 }
 
 const Projects = () => {
-  const [activeProject, setActiveProject] = useState<Project | null>(null);
-
   const sectionRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const folderRef = useRef<HTMLDivElement>(null);
@@ -179,6 +177,7 @@ const Projects = () => {
         "Managed cloud hosting and automated continuous deployment"
       ],
       link: "https://vibesholicmedia.com",
+      github: "https://github.com/bhuvanvokkaliga29",
       featured: true,
     },
     {
@@ -323,59 +322,98 @@ const Projects = () => {
           {/* 3x3 Project Grid */}
           <div
             ref={cardsContainerRef}
-            className="grid grid-cols-3 gap-8 w-full z-25 relative mt-6"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full z-20 relative mt-6"
           >
-            {projects.map((project, idx) => (
-              <div
-                key={idx}
-                onClick={() => setActiveProject(project)}
-                className="project-card-3d bg-white p-6 rounded-[28px] border border-zinc-200/50 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer group relative flex flex-col justify-between min-h-[360px]"
-              >
-                <div>
-                  {/* Clean UI Thumbnail */}
-                  <div className="h-40 rounded-2xl overflow-hidden mb-4 relative bg-slate-50 border border-slate-100 flex items-center justify-center">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                      <span className="text-white text-xs font-bold uppercase tracking-wider">Click to Explore</span>
+            {projects.map((project, idx) => {
+              const targetUrl = project.github || project.link || "https://github.com/bhuvanvokkaliga29";
+              const isGithub = Boolean(project.github);
+
+              return (
+                <a
+                  key={idx}
+                  href={targetUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="project-card-3d bg-white p-6 rounded-[28px] border border-zinc-200/50 shadow-md hover:shadow-2xl hover:-translate-y-1 hover:border-yellow-400/50 transition-all duration-300 cursor-pointer group relative flex flex-col justify-between min-h-[380px] no-underline block text-inherit"
+                >
+                  <div>
+                    {/* Clean UI Thumbnail */}
+                    <div className="h-44 rounded-2xl overflow-hidden mb-4 relative bg-slate-50 border border-slate-100 flex items-center justify-center">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-between p-4">
+                        <span className="text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 drop-shadow-md">
+                          {isGithub ? (
+                            <>
+                              <Github size={14} className="text-yellow-400" /> Open Repository
+                            </>
+                          ) : (
+                            <>
+                              <ExternalLink size={14} className="text-yellow-400" /> Open Website
+                            </>
+                          )}
+                        </span>
+                        <div className="w-7 h-7 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center text-white">
+                          <ArrowUpRight size={15} />
+                        </div>
+                      </div>
                     </div>
+
+                    <h3 className="font-extrabold text-base text-zinc-900 leading-snug mb-2 group-hover:text-yellow-600 transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-xs text-zinc-500 leading-relaxed mb-4 line-clamp-2">
+                      {project.description}
+                    </p>
                   </div>
 
-                  <h3 className="font-extrabold text-base text-zinc-900 leading-snug mb-2 group-hover:text-yellow-600 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-xs text-zinc-500 leading-relaxed mb-4 line-clamp-2">
-                    {project.description}
-                  </p>
-                </div>
+                  <div className="space-y-3 pt-3 border-t border-zinc-100">
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[9px] font-black uppercase tracking-wider bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded-md"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
 
-                <div className="space-y-3 pt-3 border-t border-zinc-100">
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[9px] font-black uppercase tracking-wider bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded-md"
-                      >
-                        {tag}
+                    <div className="flex items-center justify-between text-xs font-bold pt-1 text-zinc-400">
+                      <span className="text-[10px] uppercase tracking-wider text-yellow-600 font-extrabold flex items-center gap-1 group-hover:underline">
+                        {isGithub ? "View on GitHub" : "Visit Platform"} <ArrowUpRight size={13} className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center justify-between text-xs font-bold pt-1 text-zinc-400">
-                    <span className="text-[10px] uppercase tracking-wider text-yellow-600 font-extrabold group-hover:underline">
-                      View Details →
-                    </span>
-                    <div className="flex items-center gap-2">
-                      {project.link && <ExternalLink size={13} className="text-zinc-600 hover:text-zinc-900" />}
-                      {project.github && <Github size={13} className="text-zinc-600 hover:text-zinc-900" />}
+                      <div className="flex items-center gap-1.5">
+                        {project.github && (
+                          <span
+                            title="GitHub Repository"
+                            className="p-1.5 rounded-lg text-zinc-700 hover:text-black hover:bg-zinc-100 transition-colors"
+                          >
+                            <Github size={14} />
+                          </span>
+                        )}
+                        {project.link && (
+                          <span
+                            onClick={(e) => {
+                              e.preventDefault();
+                              e.stopPropagation();
+                              window.open(project.link, "_blank", "noopener,noreferrer");
+                            }}
+                            title="Live Demo / Platform"
+                            className="p-1.5 rounded-lg text-zinc-700 hover:text-yellow-600 hover:bg-yellow-50 transition-colors"
+                          >
+                            <ExternalLink size={14} />
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                </a>
+              );
+            })}
           </div>
 
         </div>
@@ -383,52 +421,62 @@ const Projects = () => {
         {/* --- MOBILE SNAP SLIDER VIEW --- */}
         <div className="w-full lg:hidden overflow-hidden relative">
           <div className="flex overflow-x-auto snap-x snap-mandatory gap-5 no-scrollbar py-6 px-2 w-full">
-            {projects.map((project, idx) => (
-              <div
-                key={idx}
-                onClick={() => setActiveProject(project)}
-                className="snap-center w-[85vw] sm:w-[50vw] bg-white p-5 rounded-[26px] border border-zinc-200/70 shadow-md flex-shrink-0 flex flex-col justify-between min-h-[380px]"
-              >
-                <div>
-                  <div className="h-44 rounded-2xl overflow-hidden mb-4 bg-slate-50 border border-slate-100">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <h3 className="font-extrabold text-base text-zinc-900 leading-snug mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-xs text-zinc-500 leading-relaxed mb-4 line-clamp-3">
-                    {project.description}
-                  </p>
-                </div>
+            {projects.map((project, idx) => {
+              const targetUrl = project.github || project.link || "https://github.com/bhuvanvokkaliga29";
+              const isGithub = Boolean(project.github);
 
-                <div className="space-y-3 pt-3 border-t border-zinc-100">
-                  <div className="flex flex-wrap gap-1.5">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="text-[9px] font-black uppercase tracking-wider bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded-md"
-                      >
-                        {tag}
+              return (
+                <a
+                  key={idx}
+                  href={targetUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="snap-center w-[85vw] sm:w-[50vw] bg-white p-5 rounded-[26px] border border-zinc-200/70 shadow-md flex-shrink-0 flex flex-col justify-between min-h-[380px] no-underline block text-inherit active:scale-98 transition-transform"
+                >
+                  <div>
+                    <div className="h-44 rounded-2xl overflow-hidden mb-4 bg-slate-50 border border-slate-100 relative">
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute top-3 right-3 w-8 h-8 rounded-full bg-black/60 backdrop-blur-md flex items-center justify-center text-white">
+                        <ArrowUpRight size={16} className="text-yellow-400" />
+                      </div>
+                    </div>
+                    <h3 className="font-extrabold text-base text-zinc-900 leading-snug mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-xs text-zinc-500 leading-relaxed mb-4 line-clamp-3">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  <div className="space-y-3 pt-3 border-t border-zinc-100">
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-[9px] font-black uppercase tracking-wider bg-zinc-100 text-zinc-600 px-2 py-0.5 rounded-md"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <div className="flex items-center justify-between text-xs font-bold pt-1 text-zinc-400">
+                      <span className="text-[10px] uppercase tracking-wider text-yellow-600 font-extrabold flex items-center gap-1">
+                        {isGithub ? "Open on GitHub" : "Visit Platform"} <ArrowUpRight size={12} />
                       </span>
-                    ))}
-                  </div>
-
-                  <div className="flex items-center justify-between text-xs font-bold pt-1 text-zinc-400">
-                    <span className="text-[10px] uppercase tracking-wider text-yellow-600 font-extrabold">
-                      Tap to Read More →
-                    </span>
-                    <div className="flex items-center gap-2">
-                      {project.link && <ExternalLink size={13} className="text-zinc-600" />}
-                      {project.github && <Github size={13} className="text-zinc-600" />}
+                      <div className="flex items-center gap-1.5">
+                        {project.github && <Github size={14} className="text-zinc-700" />}
+                        {project.link && <ExternalLink size={14} className="text-zinc-700" />}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </div>
-            ))}
+                </a>
+              );
+            })}
           </div>
           <p className="text-center text-xs font-bold text-zinc-400 uppercase tracking-widest mt-2">
             Swipe left / right to browse all 9 projects
@@ -453,114 +501,6 @@ const Projects = () => {
         </div>
 
       </div>
-
-      {/* --- RICH PROJECT DETAIL MODAL --- */}
-      {activeProject && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-zinc-950/80 backdrop-blur-md"
-          onClick={() => setActiveProject(null)}
-        >
-          <div
-            className="w-full max-w-lg bg-white rounded-3xl p-8 border border-zinc-200 shadow-2xl relative overflow-hidden animate-slide-up max-h-[85vh] overflow-y-auto"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setActiveProject(null)}
-              className="absolute top-4 right-4 text-zinc-400 hover:text-zinc-900 transition-colors"
-              aria-label="Close modal"
-            >
-              <X size={20} />
-            </button>
-
-            <h3 className="text-2xl font-black uppercase tracking-tight text-zinc-900 mb-4">
-              {activeProject.title}
-            </h3>
-
-            <div className="h-56 rounded-2xl overflow-hidden mb-6 bg-slate-50 border border-slate-200">
-              <img
-                src={activeProject.image}
-                alt={activeProject.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            <p className="text-sm text-zinc-600 leading-relaxed mb-4">
-              {activeProject.description}
-            </p>
-
-            {activeProject.metrics && (
-              <div className="mb-4 bg-yellow-400/10 border border-yellow-400/30 rounded-xl p-3">
-                <span className="text-[10px] font-black uppercase tracking-wider text-yellow-700 block mb-0.5">
-                  Verified Performance &amp; Results
-                </span>
-                <p className="text-xs font-bold text-zinc-900">
-                  {activeProject.metrics}
-                </p>
-              </div>
-            )}
-
-            {activeProject.problemStatement && (
-              <div className="mb-4">
-                <h4 className="font-extrabold text-[11px] text-zinc-950 uppercase tracking-wider mb-1">
-                  Problem Statement
-                </h4>
-                <p className="text-xs text-zinc-600 leading-relaxed">
-                  {activeProject.problemStatement}
-                </p>
-              </div>
-            )}
-
-            {activeProject.architecture && (
-              <div className="mb-4">
-                <h4 className="font-extrabold text-[11px] text-zinc-950 uppercase tracking-wider mb-1">
-                  Technical Architecture
-                </h4>
-                <p className="text-xs text-zinc-600 leading-relaxed font-mono bg-zinc-100 p-2.5 rounded-lg border border-zinc-200/60">
-                  {activeProject.architecture}
-                </p>
-              </div>
-            )}
-
-            <div className="mb-6">
-              <h4 className="font-extrabold text-xs text-zinc-950 uppercase tracking-wider mb-2">
-                Key Features
-              </h4>
-              <ul className="space-y-2">
-                {activeProject.features.map((feat, idx) => (
-                  <li key={idx} className="text-xs text-zinc-500 flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 bg-[#f4c400] rounded-full mt-1.5 flex-shrink-0" />
-                    {feat}
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="flex gap-4">
-              {activeProject.link && (
-                <a
-                  href={activeProject.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-yellow-400 hover:bg-yellow-300 text-zinc-950 font-bold uppercase tracking-widest text-xs px-6 py-3 rounded-xl flex items-center gap-2 hover:glow-yellow hover:scale-[1.02] active:scale-[0.98] transition-all"
-                >
-                  <ExternalLink size={14} /> Live Demo
-                </a>
-              )}
-              {activeProject.github && (
-                <a
-                  href={activeProject.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-zinc-900 hover:bg-zinc-800 text-white font-bold uppercase tracking-widest text-xs px-6 py-3 rounded-xl flex items-center gap-2 hover:scale-[1.02] active:scale-[0.98] transition-all"
-                >
-                  <Github size={14} /> GitHub Link
-                </a>
-              )}
-            </div>
-
-          </div>
-        </div>
-      )}
     </section>
   );
 };
