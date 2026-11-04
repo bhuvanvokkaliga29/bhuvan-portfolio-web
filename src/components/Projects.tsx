@@ -203,6 +203,7 @@ const Projects = () => {
 
   useEffect(() => {
     const isDesktop = window.innerWidth >= 1024;
+    
     if (!isDesktop) return;
 
     const section = sectionRef.current;
@@ -215,40 +216,46 @@ const Projects = () => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
-        start: "top 80%",
-        once: true,
+        start: "top top",
+        end: "+=150%",
+        pin: true,
+        scrub: 1,
+        invalidateOnRefresh: true,
       }
     });
 
     tl.to(folderFront, {
       rotationX: -130,
-      duration: 1.2,
+      duration: 1.5,
       ease: "power2.inOut",
     });
 
     tl.fromTo(
       cards,
       {
-        y: 80,
+        y: 200,
+        scale: 0.2,
         opacity: 0,
-        scale: 0.95,
+        rotationZ: () => gsap.utils.random(-15, 15),
       },
       {
         y: 0,
-        opacity: 1,
         scale: 1,
-        stagger: 0.1,
-        duration: 0.8,
-        ease: "power2.out",
+        opacity: 1,
+        rotationZ: 0,
+        stagger: 0.2,
+        duration: 2,
+        ease: "back.out(1.2)",
       },
-      "-=0.4"
+      "-=0.5"
     );
 
     tl.to(folder, {
-      opacity: 0.2,
-      scale: 0.85,
-      duration: 1,
-    }, "-=0.8");
+      opacity: 0.15,
+      scale: 0.8,
+      y: 100,
+      duration: 1.5,
+    }, "-=1.5");
 
     return () => {
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -289,12 +296,12 @@ const Projects = () => {
           {/* Animated 3D Archive Folder */}
           <div
             ref={folderRef}
-            className="w-[480px] h-[280px] relative z-10 flex items-center justify-center pointer-events-none mb-10"
+            className="w-[480px] h-[320px] relative z-10 flex items-center justify-center pointer-events-none mb-12"
             style={{ perspective: "2000px" }}
           >
             <div className="absolute inset-0 bg-[#f4c400] rounded-b-[32px] rounded-tr-[32px] shadow-2xl flex items-end justify-center pb-6 border border-yellow-500/10">
-              <div className="w-32 h-6 bg-yellow-600/20 rounded-md flex items-center justify-center text-[10px] font-bold uppercase tracking-wider text-yellow-900">
-                AI / ML ARCHIVE • 20+
+              <div className="w-28 h-6 bg-yellow-600/20 rounded-md flex items-center justify-center text-[10px] font-bold uppercase tracking-wider text-yellow-900">
+                AI / ML ARCHIVE
               </div>
             </div>
 
@@ -316,26 +323,24 @@ const Projects = () => {
           {/* 3x3 Project Grid */}
           <div
             ref={cardsContainerRef}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7 w-full z-25 relative mt-4"
+            className="grid grid-cols-3 gap-8 w-full z-25 relative mt-6"
           >
             {projects.map((project, idx) => (
               <div
                 key={idx}
                 onClick={() => setActiveProject(project)}
-                className="project-card-3d bg-white p-5 rounded-[26px] border border-zinc-200/70 shadow-sm hover:shadow-xl hover:scale-[1.02] transition-all duration-300 cursor-pointer group relative flex flex-col justify-between min-h-[370px]"
+                className="project-card-3d bg-white p-6 rounded-[28px] border border-zinc-200/50 shadow-md hover:shadow-xl hover:scale-105 transition-all duration-300 cursor-pointer group relative flex flex-col justify-between min-h-[360px]"
               >
                 <div>
-                  {/* Light-Themed Clean UI Thumbnail */}
-                  <div className="h-44 rounded-2xl overflow-hidden mb-4 relative bg-slate-50 border border-slate-100 flex items-center justify-center">
+                  {/* Clean UI Thumbnail */}
+                  <div className="h-40 rounded-2xl overflow-hidden mb-4 relative bg-slate-50 border border-slate-100 flex items-center justify-center">
                     <img
                       src={project.image}
                       alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
-                      <span className="text-white text-xs font-bold uppercase tracking-wider flex items-center gap-1.5">
-                        <Sparkles size={12} className="text-yellow-400" /> Click to Inspect Architecture
-                      </span>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-4">
+                      <span className="text-white text-xs font-bold uppercase tracking-wider">Click to Explore</span>
                     </div>
                   </div>
 
