@@ -75,55 +75,57 @@ const Navbar = () => {
     <>
       <header
         ref={navRef}
-        className={`fixed top-0 left-0 w-full z-40 transition-transform duration-500 bg-transparent py-6 px-6 md:px-12 flex justify-between items-center ${
+        className={`fixed top-0 left-0 w-full z-40 transition-transform duration-500 bg-transparent py-5 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 ${
           showNavbar ? "translate-y-0" : "-translate-y-full"
         }`}
       >
-        {/* Logo (Renamed to bhuvan.web) */}
-        <div ref={logoRef} className="flex items-center">
-          <a
-            href="#home"
-            className="text-2xl font-black uppercase tracking-widest text-white hover:text-yellow-400 hover:glow-yellow transition-all duration-300 select-none"
-          >
-            Bhuvan<span className="text-yellow-400 font-extrabold">.web</span>
-          </a>
-        </div>
-
-        {/* Desktop Menu links */}
-        <nav
-          ref={linksRef}
-          className="hidden md:flex items-center gap-7 glassmorphism px-8 py-3 rounded-full border border-white/5 backdrop-blur-xl"
-        >
-          {navLinks.map((item) => (
+        <div className="w-full max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1560px] mx-auto flex justify-between items-center">
+          {/* Logo (Renamed to bhuvan.web) */}
+          <div ref={logoRef} className="flex items-center">
             <a
-              key={item.label}
-              href={item.href}
-              className="nav-link relative text-sm font-semibold tracking-wider uppercase text-white/80 hover:text-white transition-colors duration-300 group py-1"
+              href="#home"
+              className="text-2xl font-black uppercase tracking-widest text-white hover:text-yellow-400 hover:glow-yellow transition-all duration-300 select-none"
             >
-              {item.label}
-              {/* Expand Underline on hover */}
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-yellow-400 transition-all duration-300 group-hover:w-full" />
+              Bhuvan<span className="text-yellow-400 font-extrabold">.web</span>
             </a>
-          ))}
-        </nav>
+          </div>
 
-        {/* Action Button & Hamburger (Changed to Let's Talk link) */}
-        <div className="flex items-center gap-4">
-          <a
-            href="#contact"
-            className="hidden sm:inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-zinc-950 font-bold uppercase tracking-widest text-xs px-6 py-3 rounded-full hover:glow-yellow hover:scale-105 transition-all duration-300 active:scale-95"
+          {/* Desktop Menu links */}
+          <nav
+            ref={linksRef}
+            className="hidden md:flex items-center gap-7 glassmorphism px-8 py-3 rounded-full border border-white/5 backdrop-blur-xl"
           >
-            Let's Talk <ArrowRight size={12} />
-          </a>
+            {navLinks.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="nav-link relative text-sm font-semibold tracking-wider uppercase text-white/80 hover:text-white transition-colors duration-300 group py-1"
+              >
+                {item.label}
+                {/* Expand Underline on hover */}
+                <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-yellow-400 transition-all duration-300 group-hover:w-full" />
+              </a>
+            ))}
+          </nav>
 
-          {/* Hamburger Menu Toggle Button */}
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden w-10 h-10 flex items-center justify-center rounded-full glassmorphism text-white border border-white/10"
-            aria-label="Toggle Menu"
-          >
-            {isOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          {/* Action Button & Hamburger (Changed to Let's Talk link) */}
+          <div className="flex items-center gap-4">
+            <a
+              href="#contact"
+              className="hidden sm:inline-flex items-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-zinc-950 font-bold uppercase tracking-widest text-xs px-6 py-3 rounded-full hover:glow-yellow hover:scale-105 transition-all duration-300 active:scale-95"
+            >
+              Let's Talk <ArrowRight size={12} />
+            </a>
+
+            {/* Hamburger Menu Toggle Button */}
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="md:hidden w-10 h-10 flex items-center justify-center rounded-full glassmorphism text-white border border-white/10"
+              aria-label="Toggle Menu"
+            >
+              {isOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
       </header>
 

@@ -179,7 +179,7 @@ const Service = () => {
       {/* Sticky Fullscreen Section */}
       <div
         ref={stickyRef}
-        className={`w-full flex flex-col justify-center items-center px-4 sm:px-6 md:px-16 ${
+        className={`w-full flex flex-col justify-center items-center px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 ${
           isDesktop ? "h-screen sticky top-0 overflow-hidden" : "h-auto min-h-[80vh] relative"
         }`}
       >

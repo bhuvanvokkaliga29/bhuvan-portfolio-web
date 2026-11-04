@@ -42,7 +42,7 @@ const WisprFlowSection = () => {
   return (
     <section
       id="wispr-flow"
-      className="relative w-full bg-[#09090b] text-white py-24 sm:py-32 px-6 md:px-16 overflow-hidden z-20 border-t border-zinc-900"
+      className="relative w-full bg-[#09090b] text-white py-20 sm:py-28 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 overflow-hidden z-20 border-t border-zinc-900"
     >
       {/* Subtle Ambient Radial Glow */}
       <div className="absolute top-1/3 left-1/2 -translate-x-1/2 w-[600px] h-[350px] bg-yellow-500/[0.04] rounded-full blur-[160px] pointer-events-none" />
@@ -52,10 +52,10 @@ const WisprFlowSection = () => {
         VOICE.IO
       </div>
 
-      <div className="w-full max-w-6xl mx-auto flex flex-col relative z-10">
+      <div className="w-full max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1560px] mx-auto flex flex-col relative z-10">
         
         {/* Header Block: Raw, Bold & Minimalist */}
-        <div className="max-w-3xl mb-16 space-y-4">
+        <div className="max-w-4xl lg:max-w-5xl mb-12 sm:mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 text-yellow-400 font-mono text-xs tracking-wider uppercase">
             <span className="w-2 h-2 rounded-full bg-yellow-400 animate-ping" />
             Wispr Flow Hiring Challenge • Growth Engineering
@@ -178,7 +178,7 @@ const WisprFlowSection = () => {
         </div>
 
         {/* --- 3 RAW ARCHITECTURAL PRINCIPLES --- */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
           
           <div className="p-6 rounded-3xl bg-[#0f0f12] border border-zinc-800/80 space-y-3">
             <span className="text-yellow-400 font-mono text-xs font-bold">

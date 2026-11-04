@@ -219,11 +219,10 @@ const Chatbot = () => {
                   className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                 >
                   <div
-                    className={`max-w-[88%] rounded-2xl px-3.5 py-2.5 leading-relaxed whitespace-pre-line shadow-sm ${
-                      msg.role === "user"
+                    className={`max-w-[88%] rounded-2xl px-3.5 py-2.5 leading-relaxed whitespace-pre-line shadow-sm ${msg.role === "user"
                         ? "bg-yellow-400 text-zinc-950 font-semibold"
                         : "bg-zinc-900 border border-zinc-800 text-zinc-200"
-                    }`}
+                      }`}
                   >
                     {msg.text}
                   </div>

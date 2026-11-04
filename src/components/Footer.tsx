@@ -29,7 +29,7 @@ const Footer = () => {
       </div>
 
       {/* --- LAYER 2: INTERACTIVE CONTENT LAYER --- */}
-      <div className="w-full max-w-7xl mx-auto px-6 md:px-16 flex flex-col items-center gap-12 relative z-10">
+      <div className="w-full max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1560px] mx-auto px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 flex flex-col items-center gap-12 relative z-10">
         
         {/* Floating Profile Image & CTA Buttons */}
         <div className="flex flex-col items-center text-center gap-6">

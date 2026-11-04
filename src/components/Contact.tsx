@@ -52,14 +52,14 @@ const Contact = () => {
     <section
       ref={containerRef}
       id="contact"
-      className="relative w-full min-h-[80vh] lg:min-h-screen bg-[#0a0a0a] rounded-t-[24px] sm:rounded-t-[40px] text-white flex flex-col justify-center items-center py-16 sm:py-24 px-4 sm:px-6 md:px-16 overflow-hidden z-30 shadow-[0_-20px_50px_rgba(0,0,0,0.5)] border-t border-white/5"
+      className="relative w-full min-h-[80vh] lg:min-h-screen bg-[#0a0a0a] rounded-t-[24px] sm:rounded-t-[40px] text-white flex flex-col justify-center items-center py-16 sm:py-24 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 overflow-hidden z-30 shadow-[0_-20px_50px_rgba(0,0,0,0.5)] border-t border-white/5"
     >
       {/* Massive Background Typography */}
       <div className="absolute inset-0 flex items-center justify-center text-[25vw] font-black text-white opacity-[0.02] tracking-tighter select-none pointer-events-none">
         CONNECT
       </div>
 
-      <div className="w-full max-w-4xl mx-auto flex flex-col items-center gap-12 z-10 relative">
+      <div className="w-full max-w-5xl xl:max-w-6xl 2xl:max-w-7xl mx-auto flex flex-col items-center gap-12 z-10 relative">
         
         {/* Header */}
         <div className="text-center">

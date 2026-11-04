@@ -114,8 +114,8 @@ const Welcome = () => {
       {/* Sticky Panel Container */}
       <div
         ref={stickyRef}
-        className={`w-full flex flex-col justify-center items-center px-4 sm:px-6 md:px-16 ${
-          isDesktop ? "h-screen sticky top-0 overflow-hidden" : "h-auto gap-12 relative"
+        className={`w-full flex flex-col justify-center items-center px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 ${
+          isDesktop ? "h-screen sticky top-0 overflow-hidden" : "h-auto gap-12 relative py-8"
         }`}
       >
         {/* Background typography watermark (WELCOME) */}
@@ -135,11 +135,11 @@ const Welcome = () => {
           data-aos={!isDesktop ? "fade-up" : undefined}
           className={`${
             isDesktop
-              ? "absolute inset-0 flex items-center justify-center max-w-7xl mx-auto px-4 z-10 w-full"
-              : "relative w-full max-w-7xl mx-auto z-10 flex flex-col items-center"
+              ? "absolute inset-0 flex items-center justify-center max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1560px] mx-auto px-2 sm:px-4 z-10 w-full"
+              : "relative w-full max-w-7xl xl:max-w-[1440px] mx-auto z-10 flex flex-col items-center"
           }`}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10 items-center w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-14 items-center w-full">
             
             {/* Left Side: Full Body Image Frame (5 cols) */}
             <div className="lg:col-span-5 flex justify-center">
@@ -188,11 +188,11 @@ const Welcome = () => {
           data-aos-delay={!isDesktop ? "200" : undefined}
           className={`${
             isDesktop
-              ? "absolute inset-0 w-full h-full flex flex-col justify-center items-center max-w-7xl mx-auto px-4 z-10 opacity-0 pointer-events-none"
-              : "relative w-full max-w-7xl mx-auto z-10 flex flex-col items-center opacity-100 pointer-events-auto"
+              ? "absolute inset-0 w-full h-full flex flex-col justify-center items-center max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1560px] mx-auto px-2 sm:px-4 z-10 opacity-0 pointer-events-none"
+              : "relative w-full max-w-7xl xl:max-w-[1440px] mx-auto z-10 flex flex-col items-center opacity-100 pointer-events-auto"
           }`}
         >
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 w-full items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 w-full items-start">
             
             {/* Column 1: Journey Timeline (6 cols) */}
             <div className="lg:col-span-6 space-y-6">

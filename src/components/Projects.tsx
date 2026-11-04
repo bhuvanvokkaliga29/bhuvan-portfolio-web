@@ -264,7 +264,7 @@ const Projects = () => {
     <section
       ref={sectionRef}
       id="projects"
-      className="relative min-h-screen bg-[#f7f6f2] text-zinc-900 py-24 px-6 md:px-16 overflow-hidden z-20"
+      className="relative min-h-screen bg-[#f7f6f2] text-zinc-900 py-20 sm:py-28 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 overflow-hidden z-20"
     >
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-[#f4c400] opacity-[0.08] blur-[120px] pointer-events-none" />
 
@@ -272,7 +272,7 @@ const Projects = () => {
         My Work
       </div>
 
-      <div ref={containerRef} className="w-full max-w-7xl mx-auto flex flex-col items-center">
+      <div ref={containerRef} className="w-full max-w-7xl xl:max-w-[1440px] 2xl:max-w-[1560px] mx-auto flex flex-col items-center">
         
         {/* Section Header */}
         <div className="text-center mb-14 z-30">
