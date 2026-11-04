@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { Trophy } from "lucide-react";
+import { Trophy, ExternalLink } from "lucide-react";
 import fullBodyImg from "../footer.png.jpeg";
 
 const Welcome = () => {
@@ -216,7 +216,18 @@ const Welcome = () => {
                           {exp.period}
                         </span>
                       </div>
-                      <p className="text-xs font-semibold text-yellow-600 mb-1">{exp.company}</p>
+                      {exp.company === "Vibesholic Media" ? (
+                        <a
+                          href="https://vibesholicmedia.com"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs font-semibold text-yellow-600 hover:text-yellow-700 underline inline-flex items-center gap-1 mb-1"
+                        >
+                          {exp.company} <ExternalLink size={10} />
+                        </a>
+                      ) : (
+                        <p className="text-xs font-semibold text-yellow-600 mb-1">{exp.company}</p>
+                      )}
                       <p className="text-xs text-zinc-500 leading-normal">{exp.description}</p>
                     </div>
                   </div>

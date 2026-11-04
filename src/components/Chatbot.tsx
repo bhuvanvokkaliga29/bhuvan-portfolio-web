@@ -21,7 +21,7 @@ const structuredKnowledge: KnowledgeItem[] = [
   {
     keywords: ["who", "bhuvan", "about", "bio", "intro", "summary"],
     answer:
-      "👤 **Bhuvan Gowda H K** is an AI/ML Engineer and Software Developer specializing in Machine Learning, Deep Learning, Agentic AI, Computer Vision, and full-stack software development.\n\n• **Education:** B.E. in Computer Science & Engineering (AI & ML) at AMC Engineering College, Bengaluru (2023–2027)\n• **Hands-On Experience:** 20+ real-world AI projects and 10+ national-level hackathons\n• **Leadership:** Developer Club Lead (300+ members) & Academics President (Dept. of CSE AI & ML)\n• **Industry Work:** Software Developer (Freelance) at Vibesholic Media (Aug 2025 – Present)\n• **Hackathons:** 1st Runner-Up at IoTopia National Hackathon 2025; Top Leaderboard in RBIH × IIT Delhi Fraud Prevention Challenge 2026.",
+      "👤 **Bhuvan Gowda H K** is an AI/ML Engineer and Software Developer specializing in Machine Learning, Deep Learning, Agentic AI, Computer Vision, and full-stack software development.\n\n• **Education:** B.E. in Computer Science & Engineering (AI & ML) at AMC Engineering College, Bengaluru (2023–2027)\n• **Hands-On Experience:** 20+ real-world AI projects and 10+ national-level hackathons\n• **Leadership:** Developer Club Lead (300+ members) & Academics President (Dept. of CSE AI & ML)\n• **Industry Work:** Software Developer (Freelance) at Vibesholic Media (https://vibesholicmedia.com) (Aug 2025 – Present)\n• **Hackathons:** 1st Runner-Up at IoTopia National Hackathon 2025; Top Leaderboard in RBIH × IIT Delhi Fraud Prevention Challenge 2026.",
   },
   {
     keywords: ["project", "projects", "work", "built", "portfolio", "showcase"],
@@ -61,7 +61,7 @@ const structuredKnowledge: KnowledgeItem[] = [
   {
     keywords: ["experience", "job", "career", "work experience", "vibesholic", "freelance"],
     answer:
-      "💼 **Professional Experience**:\n\n1. **Software Developer (Freelance) — Vibesholic Media** (Aug 2025 – Present)\n   • Developing and maintaining the official company website.\n   • Engineering new UI features and performance improvements using React.js and Node.js.\n   • Managing deployment pipelines, bug validation, and reliability.\n\n2. **Lead, Developer Club | Academics President** — Dept. of CSE (AI & ML), AMC EC (2024 – Present)\n   • Leading 300+ member developer community, organizing hackathons, tech workshops, and student mentorship.",
+      "💼 **Professional Experience**:\n\n1. **Software Developer (Freelance) — Vibesholic Media** (https://vibesholicmedia.com) (Aug 2025 – Present)\n   • Developing and maintaining the official company website.\n   • Engineering new UI features and performance improvements using React.js and Node.js.\n   • Managing deployment pipelines, bug validation, and reliability.\n\n2. **Lead, Developer Club | Academics President** — Dept. of CSE (AI & ML), AMC EC (2024 – Present)\n   • Leading 300+ member developer community, organizing hackathons, tech workshops, and student mentorship.",
   },
   {
     keywords: ["leadership", "club", "lead", "community", "president", "students"],

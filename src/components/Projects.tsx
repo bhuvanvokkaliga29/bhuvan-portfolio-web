@@ -177,7 +177,6 @@ const Projects = () => {
         "Managed cloud hosting and automated continuous deployment"
       ],
       link: "https://vibesholicmedia.com",
-      github: "https://github.com/bhuvanvokkaliga29",
       featured: true,
     },
     {
@@ -325,8 +324,11 @@ const Projects = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 w-full z-20 relative mt-6"
           >
             {projects.map((project, idx) => {
-              const targetUrl = project.github || project.link || "https://github.com/bhuvanvokkaliga29";
-              const isGithub = Boolean(project.github);
+              const isVibesholic = project.title.toLowerCase().includes("vibesholic");
+              const targetUrl = isVibesholic
+                ? "https://vibesholicmedia.com"
+                : (project.github || project.link || "https://github.com/bhuvanvokkaliga29");
+              const isGithub = Boolean(project.github && !isVibesholic);
 
               return (
                 <a
@@ -422,8 +424,11 @@ const Projects = () => {
         <div className="w-full lg:hidden overflow-hidden relative">
           <div className="flex overflow-x-auto snap-x snap-mandatory gap-5 no-scrollbar py-6 px-2 w-full">
             {projects.map((project, idx) => {
-              const targetUrl = project.github || project.link || "https://github.com/bhuvanvokkaliga29";
-              const isGithub = Boolean(project.github);
+              const isVibesholic = project.title.toLowerCase().includes("vibesholic");
+              const targetUrl = isVibesholic
+                ? "https://vibesholicmedia.com"
+                : (project.github || project.link || "https://github.com/bhuvanvokkaliga29");
+              const isGithub = Boolean(project.github && !isVibesholic);
 
               return (
                 <a
