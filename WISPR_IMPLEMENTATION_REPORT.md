@@ -154,3 +154,4 @@ robocopy C:\Users\HP\Desktop\bhuvan-portfolio-web-backup-before-wispr . /E
 
 1. **Offline Chatbot Mode:** The chatbot uses a high-performance structured client-side knowledge base that guarantees zero API key exposure and 100% factual accuracy without latency. If a live LLM endpoint is desired in the future, connect a secure serverless backend route (e.g., Vercel / Cloudflare edge function) referencing `WISPR_FLOW_API_KEY` stored in server-side environment variables.
 2. **Voice Audio Playback:** The Wispr Flow section currently includes an acoustic frequency visualizer and simulated real-time dictation typist. If actual recorded `.wav` or `.mp3` voice snippets become available, they can be embedded directly into the player controls.
+

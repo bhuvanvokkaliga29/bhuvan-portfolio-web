@@ -10,7 +10,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="relative w-full bg-[#f4c400] text-zinc-950 pt-24 pb-8 overflow-hidden z-35 border-t border-yellow-500/10">
+    <footer className="relative w-full bg-[#f4c400] text-zinc-950 pt-24 pb-8 overflow-hidden z-30 border-t border-yellow-500/10">
       
       {/* --- LAYER 1: MULTIPLE LAYERED SCROLLING TEXT MARQUEES (Low Opacity Backdrop) --- */}
       <div className="absolute inset-0 flex flex-col justify-between py-10 pointer-events-none select-none opacity-[0.06] z-0">

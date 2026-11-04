@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="600" height="380" fill="none">
+  <!-- Background -->
+  <rect width="600" height="380" rx="20" fill="#ffffff"/>
+  <rect x="1" y="1" width="598" height="378" rx="19" stroke="#e2e8f0" stroke-width="2"/>
+  
+  <!-- Browser Header -->
+  <rect width="600" height="42" rx="20" fill="#f8fafc"/>
+  <line x1="0" y1="42" x2="600" y2="42" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="24" cy="21" r="5" fill="#ef4444"/>
+  <circle cx="40" cy="21" r="5" fill="#f59e0b"/>
+  <circle cx="56" cy="21" r="5" fill="#10b981"/>
+  <rect x="76" y="10" width="260" height="22" rx="6" fill="#ffffff" stroke="#e2e8f0"/>
+  <text x="88" y="25" fill="#475569" font-family="system-ui, sans-serif" font-size="10" font-weight="600">https://vibesholicmedia.com</text>
+  <rect x="460" y="10" width="122" height="22" rx="6" fill="#ecfdf5" stroke="#10b981" stroke-width="1"/>
+  <text x="472" y="25" fill="#047857" font-family="system-ui, sans-serif" font-size="9" font-weight="700">LIVE PLATFORM</text>
+
+  <!-- Website Nav Simulation -->
+  <g transform="translate(24, 56)">
+    <text x="0" y="20" fill="#0f172a" font-family="system-ui, sans-serif" font-size="16" font-weight="900" letter-spacing="1">VIBESHOLIC<tspan fill="#f59e0b">.</tspan></text>
+    <text x="210" y="18" fill="#64748b" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Agency</text>
+    <text x="270" y="18" fill="#64748b" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Work</text>
+    <text x="320" y="18" fill="#64748b" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Insights</text>
+    <rect x="450" y="2" width="102" height="26" rx="13" fill="#0f172a"/>
+    <text x="470" y="19" fill="#ffffff" font-family="system-ui, sans-serif" font-size="10" font-weight="700">Get in Touch</text>
+  </g>
+
+  <!-- Hero Editorial Banner -->
+  <g transform="translate(24, 96)">
+    <rect width="552" height="135" rx="14" fill="#0f172a"/>
+    
+    <!-- Accent Visual in banner -->
+    <circle cx="460" cy="67" r="70" fill="#f59e0b" opacity="0.15"/>
+    <circle cx="510" cy="40" r="45" fill="#3b82f6" opacity="0.2"/>
+
+    <rect x="24" y="22" width="112" height="20" rx="4" fill="#f59e0b"/>
+    <text x="32" y="36" fill="#0f172a" font-family="system-ui, sans-serif" font-size="9" font-weight="800">DIGITAL MEDIA AGENCY</text>
+
+    <text x="24" y="70" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="900" letter-spacing="-0.5">Scale Your Digital Brand &amp;</text>
+    <text x="24" y="94" fill="#ffffff" font-family="system-ui, sans-serif" font-size="20" font-weight="900" letter-spacing="-0.5">Creative Impact.</text>
+
+    <text x="24" y="118" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="10">Engineered with React.js, Node.js, and automated deployment pipelines.</text>
+  </g>
+
+  <!-- 3 Editorial Feature Cards -->
+  <g transform="translate(24, 245)">
+    <!-- Card 1 -->
+    <rect width="174" height="115" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+    <rect x="12" y="12" width="150" height="48" rx="6" fill="#e2e8f0"/>
+    <text x="12" y="76" fill="#0f172a" font-family="system-ui, sans-serif" font-size="11" font-weight="800">Brand Strategy</text>
+    <text x="12" y="92" fill="#64748b" font-family="system-ui, sans-serif" font-size="9">Omnichannel growth &amp; design</text>
+    <rect x="12" y="100" width="48" height="6" rx="3" fill="#cbd5e1"/>
+
+    <!-- Card 2 -->
+    <rect x="189" width="174" height="115" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+    <rect x="201" y="12" width="150" height="48" rx="6" fill="#fed7aa"/>
+    <text x="201" y="76" fill="#0f172a" font-family="system-ui, sans-serif" font-size="11" font-weight="800">Performance UI</text>
+    <text x="201" y="92" fill="#64748b" font-family="system-ui, sans-serif" font-size="9">Sub-second loading times</text>
+    <rect x="201" y="100" width="60" height="6" rx="3" fill="#f97316"/>
+
+    <!-- Card 3 -->
+    <rect x="378" width="174" height="115" rx="10" fill="#f8fafc" stroke="#e2e8f0"/>
+    <rect x="390" y="12" width="150" height="48" rx="6" fill="#bfdbfe"/>
+    <text x="390" y="76" fill="#0f172a" font-family="system-ui, sans-serif" font-size="11" font-weight="800">Full-Stack Scale</text>
+    <text x="390" y="92" fill="#64748b" font-family="system-ui, sans-serif" font-size="9">Node.js API &amp; CI/CD</text>
+    <rect x="390" y="100" width="55" height="6" rx="3" fill="#3b82f6"/>
+  </g>
+</svg>

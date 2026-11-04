@@ -17,23 +17,7 @@ const Contact = () => {
   ];
 
   useEffect(() => {
-    const isDesktop = window.innerWidth >= 1024;
-    if (!isDesktop) return;
-
-    const container = containerRef.current;
-    if (!container) return;
-
-    // Pin contact section so the footer slides over it
-    const trigger = ScrollTrigger.create({
-      trigger: container,
-      start: "bottom bottom",
-      pin: true,
-      pinSpacing: false,
-    });
-
-    return () => {
-      trigger.kill();
-    };
+    // Keep clean normal scroll flow so the footer is fully visible on both desktop & mobile
   }, []);
 
   const handleSubmit = (e: React.FormEvent) => {

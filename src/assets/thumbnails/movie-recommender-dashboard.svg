@@ -1,0 +1,115 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="600" height="380" fill="none">
+  <!-- Background -->
+  <rect width="600" height="380" rx="20" fill="#f8fafc"/>
+  <rect x="1" y="1" width="598" height="378" rx="19" stroke="#e2e8f0" stroke-width="2"/>
+  
+  <!-- Browser Header -->
+  <rect width="600" height="42" rx="20" fill="#ffffff"/>
+  <line x1="0" y1="42" x2="600" y2="42" stroke="#e2e8f0" stroke-width="1"/>
+  <circle cx="24" cy="21" r="5" fill="#ef4444"/>
+  <circle cx="40" cy="21" r="5" fill="#f59e0b"/>
+  <circle cx="56" cy="21" r="5" fill="#10b981"/>
+  <text x="76" y="25" fill="#475569" font-family="system-ui, sans-serif" font-size="11" font-weight="600">CineMatch AI • Personalized Movie Recommendation &amp; Discovery Engine</text>
+  <rect x="470" y="10" width="112" height="22" rx="6" fill="#fef2f2" stroke="#ef4444" stroke-width="1"/>
+  <text x="478" y="25" fill="#dc2626" font-family="system-ui, sans-serif" font-size="9" font-weight="700">HYBRID AI FILTER</text>
+
+  <!-- Metric Summary Cards -->
+  <g transform="translate(20, 56)">
+    <!-- Metric 1 -->
+    <rect width="170" height="64" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="14" y="24" fill="#64748b" font-family="system-ui, sans-serif" font-size="10" font-weight="600">RECOMMENDATION ENGINE</text>
+    <text x="14" y="48" fill="#0f172a" font-family="system-ui, sans-serif" font-size="16" font-weight="800">Collaborative + Content</text>
+
+    <!-- Metric 2 -->
+    <rect x="185" width="170" height="64" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="199" y="24" fill="#64748b" font-family="system-ui, sans-serif" font-size="10" font-weight="600">PREDICTION ACCURACY</text>
+    <text x="199" y="48" fill="#0f172a" font-family="system-ui, sans-serif" font-size="18" font-weight="800">94.8% Match</text>
+    <rect x="300" y="32" width="45" height="18" rx="4" fill="#ecfdf5"/>
+    <text x="307" y="44" fill="#059669" font-family="system-ui, sans-serif" font-size="9" font-weight="700">TOP</text>
+
+    <!-- Metric 3 -->
+    <rect x="370" width="190" height="64" rx="12" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="384" y="24" fill="#64748b" font-family="system-ui, sans-serif" font-size="10" font-weight="600">CATALOG INDEXED</text>
+    <text x="384" y="48" fill="#0f172a" font-family="system-ui, sans-serif" font-size="18" font-weight="800">10,000+ Titles</text>
+    <rect x="495" y="32" width="55" height="18" rx="4" fill="#eff6ff"/>
+    <text x="504" y="44" fill="#2563eb" font-family="system-ui, sans-serif" font-size="9" font-weight="700">VECTOR DB</text>
+  </g>
+
+  <!-- Left: Movie Card Showcase -->
+  <g transform="translate(20, 134)">
+    <rect width="360" height="226" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="16" y="26" fill="#0f172a" font-family="system-ui, sans-serif" font-size="12" font-weight="700">Personalized Recommendations For You</text>
+
+    <!-- 3 Movie Card Tiles -->
+    <g transform="translate(16, 42)">
+      <!-- Movie 1 -->
+      <rect width="102" height="140" rx="8" fill="#1e293b"/>
+      <rect x="6" y="6" width="90" height="75" rx="6" fill="#334155"/>
+      <circle cx="51" cy="43" r="16" fill="#475569"/>
+      <polygon points="46,35 58,43 46,51" fill="#f8fafc"/>
+      <rect x="8" y="88" width="48" height="14" rx="3" fill="#ef4444"/>
+      <text x="12" y="99" fill="#ffffff" font-family="system-ui, sans-serif" font-size="8" font-weight="700">98% Match</text>
+      <text x="8" y="116" fill="#ffffff" font-family="system-ui, sans-serif" font-size="9" font-weight="700">Interstellar</text>
+      <text x="8" y="128" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="8">Sci-Fi • 8.7 ★</text>
+
+      <!-- Movie 2 -->
+      <rect x="114" width="102" height="140" rx="8" fill="#1e293b"/>
+      <rect x="120" y="6" width="90" height="75" rx="6" fill="#334155"/>
+      <circle cx="165" cy="43" r="16" fill="#475569"/>
+      <polygon points="160,35 172,43 160,51" fill="#f8fafc"/>
+      <rect x="122" y="88" width="48" height="14" rx="3" fill="#ef4444"/>
+      <text x="126" y="99" fill="#ffffff" font-family="system-ui, sans-serif" font-size="8" font-weight="700">95% Match</text>
+      <text x="122" y="116" fill="#ffffff" font-family="system-ui, sans-serif" font-size="9" font-weight="700">Inception</text>
+      <text x="122" y="128" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="8">Thriller • 8.8 ★</text>
+
+      <!-- Movie 3 -->
+      <rect x="228" width="98" height="140" rx="8" fill="#1e293b"/>
+      <rect x="234" y="6" width="86" height="75" rx="6" fill="#334155"/>
+      <circle cx="277" cy="43" r="16" fill="#475569"/>
+      <polygon points="272,35 284,43 272,51" fill="#f8fafc"/>
+      <rect x="236" y="88" width="48" height="14" rx="3" fill="#10b981"/>
+      <text x="240" y="99" fill="#ffffff" font-family="system-ui, sans-serif" font-size="8" font-weight="700">92% Match</text>
+      <text x="236" y="116" fill="#ffffff" font-family="system-ui, sans-serif" font-size="9" font-weight="700">The Matrix</text>
+      <text x="236" y="128" fill="#94a3b8" font-family="system-ui, sans-serif" font-size="8">Action • 8.7 ★</text>
+    </g>
+
+    <rect x="16" y="196" width="328" height="20" rx="6" fill="#eff6ff"/>
+    <text x="24" y="210" fill="#1d4ed8" font-family="system-ui, sans-serif" font-size="9" font-weight="700">Cosine Similarity Matrix Computed on Scikit-Learn Embeddings</text>
+  </g>
+
+  <!-- Right: User Taste Profile Radar -->
+  <g transform="translate(395, 134)">
+    <rect width="185" height="226" rx="14" fill="#ffffff" stroke="#e2e8f0"/>
+    <text x="16" y="26" fill="#0f172a" font-family="system-ui, sans-serif" font-size="12" font-weight="700">User Vector Profile</text>
+
+    <!-- Genre Tags -->
+    <g transform="translate(16, 44)">
+      <rect width="70" height="22" rx="11" fill="#fef2f2" stroke="#fecaca"/>
+      <text x="12" y="15" fill="#dc2626" font-family="system-ui, sans-serif" font-size="9" font-weight="700">Sci-Fi (0.92)</text>
+
+      <rect x="76" width="76" height="22" rx="11" fill="#eff6ff" stroke="#bfdbfe"/>
+      <text x="86" y="15" fill="#2563eb" font-family="system-ui, sans-serif" font-size="9" font-weight="700">Thriller (0.88)</text>
+
+      <rect y="30" width="80" height="22" rx="11" fill="#f5f3ff" stroke="#ddd6fe"/>
+      <text x="10" y="45" fill="#7c3aed" font-family="system-ui, sans-serif" font-size="9" font-weight="700">Mystery (0.84)</text>
+
+      <rect x="86" y="30" width="66" height="22" rx="11" fill="#ecfdf5" stroke="#a7f3d0"/>
+      <text x="96" y="45" fill="#059669" font-family="system-ui, sans-serif" font-size="9" font-weight="700">Action</text>
+    </g>
+
+    <!-- Rating Distribution Graph -->
+    <g transform="translate(16, 114)">
+      <text x="0" y="12" fill="#64748b" font-family="system-ui, sans-serif" font-size="9" font-weight="700">RATING DENSITY</text>
+      <rect y="18" width="153" height="48" rx="6" fill="#f8fafc" stroke="#e2e8f0"/>
+      <line x1="10" y1="52" x2="143" y2="52" stroke="#cbd5e1" stroke-width="1"/>
+      <rect x="18" y="38" width="14" height="14" rx="2" fill="#93c5fd"/>
+      <rect x="42" y="30" width="14" height="22" rx="2" fill="#60a5fa"/>
+      <rect x="66" y="24" width="14" height="28" rx="2" fill="#3b82f6"/>
+      <rect x="90" y="18" width="14" height="34" rx="2" fill="#2563eb"/>
+      <rect x="114" y="28" width="14" height="24" rx="2" fill="#3b82f6"/>
+    </g>
+
+    <rect x="16" y="196" width="153" height="20" rx="6" fill="#f8fafc"/>
+    <text x="24" y="210" fill="#475569" font-family="system-ui, sans-serif" font-size="8" font-weight="600">KNN &amp; Matrix Factorization</text>
+  </g>
+</svg>
